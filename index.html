@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mie Gacoan - Pedasnya Bikin Nagih!</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" href="https://www.miegacoan.co.id/wp-content/uploads/2023/05/logo-gacoan.png" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9D91QNT3F7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9D91QNT3F7');
+  </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <img src="https://www.miegacoan.co.id/wp-content/uploads/2023/05/logo-gacoan.png" alt="Logo" class="h-10">
+        <h1 class="text-2xl font-bold text-red-600">Mie Gacoan</h1>
+      </div>
+      <div class="space-x-6">
+        <a href="#menu" class="hover:text-red-600 font-semibold">Menu</a>
+        <a href="#checkout" class="hover:text-red-600 font-semibold">Checkout</a>
+        <a href="#kontak" class="hover:text-red-600 font-semibold">Kontak</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-red-500 to-pink-500 text-white py-20 text-center">
+    <h2 class="text-4xl font-bold mb-4">Pedasnya Bikin Ketagihan!</h2>
+    <p class="text-lg mb-6">Nikmati kelezatan Mie Gacoan dengan berbagai level pedas dan harga bersahabat.</p>
+    <a href="#menu" class="bg-white text-red-600 font-semibold px-6 py-3 rounded-full shadow hover:bg-gray-100">Lihat Menu</a>
+  </section>
+
+  <!-- Menu -->
+  <section id="menu" class="max-w-7xl mx-auto py-16 px-6">
+    <h2 class="text-3xl font-bold text-center text-red-600 mb-12">Menu Favorit</h2>
+    <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8" id="product-list"></div>
+  </section>
+
+  <!-- Checkout -->
+  <section id="checkout" class="bg-red-50 py-16 px-6">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold text-red-600 mb-6 text-center">Checkout Pesanan</h2>
+      <div id="cart-items" class="bg-white rounded-xl shadow-md p-6 mb-6">
+        <p id="empty-cart" class="text-center text-gray-500">Belum ada pesanan.</p>
+      </div>
+      <div class="flex justify-between items-center">
+        <h3 class="text-xl font-bold">Total: <span id="total-price" class="text-red-600">Rp 0</span></h3>
+        <button id="pay-button" class="bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700" disabled>Bayar Sekarang</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontak -->
+  <section id="kontak" class="max-w-6xl mx-auto py-16 px-6 text-center">
+    <h2 class="text-3xl font-bold text-red-600 mb-4">Hubungi Kami</h2>
+    <p class="text-gray-700 mb-6">Ingin franchise atau saran? Hubungi kami di:</p>
+    <p class="font-semibold">📧 Email: info@miegacoan.co.id</p>
+    <p class="font-semibold">📞 Telepon: (021) 9876-5432</p>
+  </section>
+
+  <footer class="bg-red-600 text-white text-center py-6">
+    <p>&copy; 2025 Mie Gacoan. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Data produk
+    const products = [
+      { id: 1, name: 'Mie Gacoan Level 1', price: 11000, img: './gacoan1.jpeg' },
+      { id: 2, name: 'Mie Gacoan Super Pedas', price: 13000, img: './gacoanpedas.jpeg' },
+      { id: 3, name: 'Dimsum Siomay', price: 9000, img: './dimsum.jpeg' },
+    ];
+
+    const productList = document.getElementById('product-list');
+    const cartItems = document.getElementById('cart-items');
+    const totalPriceEl = document.getElementById('total-price');
+    const payButton = document.getElementById('pay-button');
+    let cart = [];
+
+    // Render produk ke halaman
+    products.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transform transition';
+      card.innerHTML = `
+        <img src="${p.img}" alt="${p.name}" class="w-full h-56 object-cover">
+        <div class="p-5 text-center">
+          <h3 class="font-bold text-lg mb-2">${p.name}</h3>
+          <p class="text-gray-600 mb-3">Nikmati cita rasa khas Mie Gacoan.</p>
+          <p class="font-semibold text-red-600 mb-3">Rp ${p.price.toLocaleString()}</p>
+          <button class="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700" onclick="addToCart(${p.id})">Tambahkan ke Keranjang</button>
+        </div>`;
+      productList.appendChild(card);
+    });
+
+    // Tambah ke keranjang
+    function addToCart(id) {
+      const product = products.find(p => p.id === id);
+      cart.push(product);
+      renderCart();
+    }
+
+    // Render isi keranjang
+    function renderCart() {
+      cartItems.innerHTML = '';
+      let total = 0;
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = `<p class="text-center text-gray-500">Belum ada pesanan.</p>`;
+        payButton.disabled = true;
+        totalPriceEl.textContent = 'Rp 0';
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        total += item.price;
+        const row = document.createElement('div');
+        row.className = 'flex justify-between items-center border-b py-2';
+        row.innerHTML = `
+          <p>${item.name}</p>
+          <p>Rp ${item.price.toLocaleString()}</p>
+          <button class="text-red-500" onclick="removeItem(${index})">Hapus</button>`;
+        cartItems.appendChild(row);
+      });
+
+      totalPriceEl.textContent = 'Rp ' + total.toLocaleString();
+      payButton.disabled = false;
+    }
+
+    // Hapus item dari keranjang
+    function removeItem(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    // Simulasi pembayaran tanpa Midtrans
+    payButton.addEventListener('click', () => {
+      if (cart.length === 0) return;
+
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      alert(`Pembayaran berhasil!\nTotal yang dibayar: Rp ${total.toLocaleString()}\nTerima kasih telah memesan di Mie Gacoan 🍜`);
+
+      // Kosongkan keranjang
+      cart = [];
+      renderCart();
+    });
+  </script>
+</body>
+</html>
