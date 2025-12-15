@@ -6,25 +6,25 @@
 
   <title>Mie Gacoan - Pedasnya Bikin Nagih!</title>
 
-  <!-- SEO META TAG (POINT 4) -->
-  <meta name="description" content="Website usaha Food and Beverage konsep mie pedas ala Gacoan. Menyediakan mie pedas berbagai level, dimsum, dan minuman favorit mahasiswa.">
-  <meta name="keywords" content="mie gacoan, mie pedas, mie level, kuliner pedas, makanan mahasiswa">
+  <!-- SEO -->
+  <meta name="description" content="Website usaha Food and Beverage konsep mie pedas ala Gacoan dengan sistem pemesanan online.">
+  <meta name="keywords" content="mie gacoan, mie pedas, food and beverage, website usaha">
   <meta name="author" content="Nahrul Hayat">
   <meta name="robots" content="index, follow">
 
-  <!-- OPEN GRAPH -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Mie Gacoan - Pedasnya Bikin Nagih!">
-  <meta property="og:description" content="Nikmati mie pedas berbagai level dan menu dimsum favorit mahasiswa.">
+  <meta property="og:description" content="Pesan mie pedas favoritmu secara online.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://www.miegacoan.co.id/wp-content/uploads/2023/05/logo-gacoan.png">
 
   <!-- Favicon -->
-  <link rel="icon" href="https://www.miegacoan.co.id/wp-content/uploads/2023/05/logo-gacoan.png" />
+  <link rel="icon" href="https://www.miegacoan.co.id/wp-content/uploads/2023/05/logo-gacoan.png">
 
-  <!-- Tailwind CSS -->
+  <!-- Tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
-  <!-- GOOGLE ANALYTICS (POINT 5) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9D91QNT3F7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -33,139 +33,153 @@
     gtag('config', 'G-9D91QNT3F7');
   </script>
 
-  <!-- SCHEMA MARKUP JSON-LD (POINT 4) -->
+  <!-- Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Restaurant",
     "name": "Mie Gacoan",
-    "description": "Usaha Food and Beverage konsep mie pedas favorit mahasiswa dengan berbagai level kepedasan.",
-    "image": "https://www.miegacoan.co.id/wp-content/uploads/2023/05/logo-gacoan.png",
     "servesCuisine": "Mie Pedas",
     "priceRange": "Rp9.000 - Rp15.000",
-    "openingHours": "Mo-Su 10:00-22:00",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Tangerang",
-      "addressRegion": "Banten",
       "addressCountry": "ID"
     }
   }
   </script>
-
 </head>
 
 <body class="bg-gray-50 text-gray-800">
 
-  <!-- Navbar -->
-  <nav class="bg-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center space-x-3">
-        <img src="https://www.miegacoan.co.id/wp-content/uploads/2023/05/logo-gacoan.png" alt="Logo Mie Gacoan" class="h-10">
-        <h1 class="text-2xl font-bold text-red-600">Mie Gacoan</h1>
-      </div>
-      <div class="space-x-6">
-        <a href="#menu" class="hover:text-red-600 font-semibold">Menu</a>
-        <a href="#checkout" class="hover:text-red-600 font-semibold">Checkout</a>
-        <a href="#kontak" class="hover:text-red-600 font-semibold">Kontak</a>
-      </div>
+<!-- NAVBAR -->
+<nav class="bg-white shadow sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <img src="https://www.miegacoan.co.id/wp-content/uploads/2023/05/logo-gacoan.png" class="h-10">
+      <h1 class="text-2xl font-bold text-red-600">Mie Gacoan</h1>
     </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="bg-gradient-to-r from-red-500 to-pink-500 text-white py-20 text-center">
-    <h2 class="text-4xl font-bold mb-4">Pedasnya Bikin Ketagihan!</h2>
-    <p class="text-lg mb-6">
-      Website usaha F&B konsep mie pedas ala Gacoan dengan harga terjangkau.
-    </p>
-    <a href="#menu" class="bg-white text-red-600 font-semibold px-6 py-3 rounded-full shadow hover:bg-gray-100">
-      Lihat Menu
-    </a>
-  </section>
-
-  <!-- Menu -->
-  <section id="menu" class="max-w-7xl mx-auto py-16 px-6">
-    <h2 class="text-3xl font-bold text-center text-red-600 mb-12">Menu Favorit</h2>
-    <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8" id="product-list"></div>
-  </section>
-
-  <!-- Checkout -->
-  <section id="checkout" class="bg-red-50 py-16 px-6">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-3xl font-bold text-red-600 mb-6 text-center">Checkout Pesanan</h2>
-      <div id="cart-items" class="bg-white rounded-xl shadow-md p-6 mb-6">
-        <p class="text-center text-gray-500">Belum ada pesanan.</p>
-      </div>
-      <div class="flex justify-between items-center">
-        <h3 class="text-xl font-bold">Total: <span id="total-price" class="text-red-600">Rp 0</span></h3>
-        <button id="pay-button" class="bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700" disabled>
-          Bayar Sekarang
-        </button>
-      </div>
+    <div class="space-x-6 font-semibold">
+      <a href="#menu">Menu</a>
+      <a href="#checkout">Checkout</a>
+      <a href="#kontak">Kontak</a>
     </div>
-  </section>
+  </div>
+</nav>
 
-  <!-- Kontak -->
-  <section id="kontak" class="max-w-6xl mx-auto py-16 px-6 text-center">
-    <h2 class="text-3xl font-bold text-red-600 mb-4">Hubungi Kami</h2>
-    <p class="text-gray-700 mb-6">Ingin franchise atau saran? Hubungi kami di:</p>
-    <p class="font-semibold">📧 Email: info@miegacoan.co.id</p>
-    <p class="font-semibold">📞 Telepon: (021) 9876-5432</p>
-  </section>
+<!-- HERO -->
+<section class="bg-gradient-to-r from-red-500 to-pink-500 text-white py-20 text-center">
+  <h2 class="text-4xl font-bold mb-4">Pedasnya Bikin Ketagihan!</h2>
+  <p class="mb-6">Website Usaha Food and Beverage dengan Sistem Pemesanan Online</p>
+  <a href="#menu" class="bg-white text-red-600 px-6 py-3 rounded-full font-semibold">
+    Lihat Menu
+  </a>
+</section>
 
-  <footer class="bg-red-600 text-white text-center py-6">
-    <p>&copy; 2025 Mie Gacoan. All Rights Reserved.</p>
-  </footer>
+<!-- MENU -->
+<section id="menu" class="max-w-7xl mx-auto py-16 px-6">
+  <h2 class="text-3xl font-bold text-center text-red-600 mb-10">Menu Favorit</h2>
+  <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-8" id="product-list"></div>
+</section>
 
-  <!-- SCRIPT PRODUK & TRANSAKSI -->
-  <script>
-    const products = [
-      { id: 1, name: 'Mie Gacoan Level 1', price: 11000, img: './gacoan1.jpeg' },
-      { id: 2, name: 'Mie Gacoan Super Pedas', price: 13000, img: './gacoanpedas.jpeg' },
-      { id: 3, name: 'Dimsum Siomay', price: 9000, img: './dimsum.jpeg' }
-    ];
+<!-- CHECKOUT -->
+<section id="checkout" class="bg-red-50 py-16 px-6">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold text-red-600 text-center mb-6">Checkout Pesanan</h2>
 
-    const productList = document.getElementById('product-list');
-    const cartItems = document.getElementById('cart-items');
-    const totalPriceEl = document.getElementById('total-price');
-    const payButton = document.getElementById('pay-button');
-    let cart = [];
+    <div id="cart-items" class="bg-white p-6 rounded-xl shadow mb-6">
+      <p class="text-center text-gray-500">Belum ada pesanan.</p>
+    </div>
 
-    products.forEach(p => {
-      const card = document.createElement('div');
-      card.className = 'bg-white rounded-2xl shadow-lg overflow-hidden';
-      card.innerHTML = `
-        <img src="${p.img}" alt="${p.name}" class="w-full h-56 object-cover">
-        <div class="p-5 text-center">
-          <h3 class="font-bold text-lg mb-2">${p.name}</h3>
-          <p class="font-semibold text-red-600 mb-3">Rp ${p.price.toLocaleString()}</p>
-          <button class="bg-red-600 text-white px-4 py-2 rounded-full" onclick="addToCart(${p.id})">
-            Tambahkan ke Keranjang
-          </button>
-        </div>`;
-      productList.appendChild(card);
-    });
+    <div class="flex justify-between items-center">
+      <h3 class="text-xl font-bold">
+        Total: <span id="total-price" class="text-red-600">Rp 0</span>
+      </h3>
+      <button id="pay-button"
+        class="bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700"
+        disabled>
+        Bayar Sekarang
+      </button>
+    </div>
+  </div>
+</section>
 
-    function addToCart(id) {
-      cart.push(products.find(p => p.id === id));
-      renderCart();
-    }
+<!-- KONTAK -->
+<section id="kontak" class="py-16 text-center">
+  <h2 class="text-3xl font-bold text-red-600 mb-4">Hubungi Kami</h2>
+  <p>📧 info@miegacoan.co.id</p>
+  <p>📞 (021) 9876-5432</p>
+</section>
 
-    function renderCart() {
-      cartItems.innerHTML = '';
-      let total = 0;
-      cart.forEach((item, index) => {
-        total += item.price;
-        cartItems.innerHTML += `
-          <div class="flex justify-between py-2 border-b">
-            <span>${item.name}</span>
-            <span>Rp ${item.price.toLocaleString()}</span>
-          </div>`;
-      });
-      totalPriceEl.textContent = 'Rp ' + total.toLocaleString();
-      payButton.disabled = cart.length === 0;
-    }
-  </script>
+<footer class="bg-red-600 text-white text-center py-4">
+  &copy; 2025 Mie Gacoan
+</footer>
+
+<!-- SCRIPT -->
+<script>
+const products = [
+  { id: 1, name: 'Mie Gacoan Level 1', price: 11000 },
+  { id: 2, name: 'Mie Gacoan Super Pedas', price: 13000 },
+  { id: 3, name: 'Dimsum Siomay', price: 9000 }
+];
+
+const productList = document.getElementById('product-list');
+const cartItems = document.getElementById('cart-items');
+const totalPriceEl = document.getElementById('total-price');
+const payButton = document.getElementById('pay-button');
+let cart = [];
+
+// Render produk
+products.forEach(p => {
+  productList.innerHTML += `
+    <div class="bg-white p-5 rounded-xl shadow text-center">
+      <h3 class="font-bold mb-2">${p.name}</h3>
+      <p class="text-red-600 mb-3">Rp ${p.price.toLocaleString()}</p>
+      <button onclick="addToCart(${p.id})"
+        class="bg-red-600 text-white px-4 py-2 rounded-full">
+        Tambah
+      </button>
+    </div>
+  `;
+});
+
+function addToCart(id) {
+  cart.push(products.find(p => p.id === id));
+  renderCart();
+}
+
+function renderCart() {
+  cartItems.innerHTML = '';
+  let total = 0;
+
+  if (cart.length === 0) {
+    cartItems.innerHTML = '<p class="text-center text-gray-500">Belum ada pesanan.</p>';
+    totalPriceEl.textContent = 'Rp 0';
+    payButton.disabled = true;
+    return;
+  }
+
+  cart.forEach(item => {
+    total += item.price;
+    cartItems.innerHTML += `
+      <div class="flex justify-between border-b py-2">
+        <span>${item.name}</span>
+        <span>Rp ${item.price.toLocaleString()}</span>
+      </div>
+    `;
+  });
+
+  totalPriceEl.textContent = 'Rp ' + total.toLocaleString();
+  payButton.disabled = false;
+}
+
+// EVENT CHECKOUT (INI YANG TADI HILANG)
+payButton.addEventListener('click', () => {
+  alert(`Checkout Berhasil!\nTotal: Rp ${cart.reduce((s,i)=>s+i.price,0).toLocaleString()}`);
+  cart = [];
+  renderCart();
+});
+</script>
 
 </body>
 </html>
